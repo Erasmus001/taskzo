@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import AppRouter from './AppRouter';
 
 function App() {
   return (
-    <div className="App">
-      <h2>Hello, Kanban</h2>
+    <div className="app">
+      <AppRouter />
     </div>
   );
 }

@@ -2,6 +2,7 @@
   "name": "react-lap",
   "version": "0.1.0",
   "private": true,
+  "main": "public/main.js",
   "dependencies": {
     "@chakra-ui/react": "^2.3.7",
     "@emotion/react": "^11.10.5",
@@ -28,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "flow": "flow watch-all"
+    "dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
+    "electron": "wait-on tcp:3000 && electron ."
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,7 @@
     "concurrently": "^7.5.0",
     "electron": "^21.2.3",
     "electron-builder": "^23.6.0",
+    "electron-is-dev": "^2.0.0",
     "electron-reloader": "^1.2.3",
     "flow-bin": "^0.193.0",
     "wait-on": "^6.0.1"

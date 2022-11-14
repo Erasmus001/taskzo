@@ -1,0 +1,57 @@
+.sidebar {
+  width: 15%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background: whitesmoke;
+  box-shadow: 0 1px 7px rgba(77, 77, 77, 0.19);
+}
+
+.sidebar_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  padding: 0 10px;
+  transition: all 0.25s ease-in-out;
+}
+
+:is(.nav a, .settings a) {
+  border-radius: 5px;
+  padding: 8px 15px;
+  width: 100%;
+  line-height: 1.5;
+  font-size: 16px;
+  color: inherit;
+}
+
+:is(.nav a, .settings a):hover {
+  background-color: #fff;
+  box-shadow: 1px 1px 13px rgba(113, 113, 113, 0.1);
+  color: blue;
+}
+
+.settings {
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.settings a {
+  padding: 12px 15px;
+  background-color: rgba(198, 198, 198, 0.337);
+}
