@@ -13,4 +13,8 @@
 //   return <div>{props.bar}</div>;
 // }
 
-// <MyComponent foo={42} />
+// <MyComponent foo={42} />\\
+
+
+// "dev": "concurrently -k \"cross-env BROWSER=none yarn start\" \"yarn electron\"",
+// "electron": "wait-on tcp:3000 && electron ."

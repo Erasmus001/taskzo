@@ -7,6 +7,20 @@
   /* Custom Application Theme Colours... */
   --main-white: #fff;
   --main-dirtywhite: whitesmoke;
+
+  ---main-dark: rgb(21, 21, 21);
+  --dark-text-color: rgb(244, 244, 244);
+
+  /* Form Container Styles */
+  --form-width: 450px;
+  --form-inputs-width: 100%;
+  --form-input-height: 50px;
+  --form-padding: 30px;
+  --form-gap: 20px;
+  --form-input-padding: 10px 13px;
+  --form-input-radius: 5px;
+  --form-border: 1px solid rgba(47, 47, 47, 0.903);
+  --form-input-border: rgb(107, 107, 107);
   
 }
 

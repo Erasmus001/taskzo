@@ -1,0 +1,81 @@
+.signup_page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  background-color: var(---main-dark);
+}
+
+.signup_form_hd h3 {
+  text-align: center;
+  font-size: 34px;
+  color: var(--dark-text-color);
+}
+
+.form_wrapper {
+  width: var(--form-width);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: var(--form-gap);
+  border: var(--form-border);
+  padding: var(--form-padding);
+  border-radius: 15px;
+}
+
+.form_group {
+  width: var(--form-inputs-width);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form_group label {
+  font-size: 18px;
+  color: aliceblue;
+}
+
+.form_group input {
+  width: var(--form-inputs-width);
+  height: var(--form-input-height);
+  padding: var(--form-input-padding);
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid var(--form-border);
+  font-size: 16px;
+  background-color: rgb(33, 33, 33);
+  border-radius: var(--form-input-radius);
+  color: rgb(216, 216, 216);
+}
+
+.form_group input:focus {
+  outline: 2px solid rgba(9, 90, 171, 0.72);
+}
+
+.form_group button {
+  width: var(--form-inputs-width);
+  height: var(--form-input-height);
+  padding: var(--form-input-padding);
+  font-size: 18px;
+  background-color: dodgerblue;
+  color: white;
+  border-radius: var(--form-input-radius);
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+}
+
+.login_link p{
+  color: whitesmoke;
+  font-size: 16px;
+}
+
+.login_link p a {
+  color: dodgerblue;
+}

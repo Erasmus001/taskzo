@@ -1,0 +1,99 @@
+.task {
+  background-color: var(---main-dark);
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.2s ease;
+}
+
+.task_info {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.task_title {
+  width: 100%;
+}
+
+.task_title h3 {
+  font-size: 16px;
+  color: rgb(244, 244, 244);
+  font-weight: 550;
+}
+
+.desc {
+  width: 100%;
+}
+
+.desc p {
+  overflow: hidden;
+  display: -webkit-box;
+  font-size: 14px;
+
+  color: rgb(149, 149, 149);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+
+
+
+
+.invisible {
+  display: none;
+}
+
+.task:hover {
+  cursor: grab;
+}
+
+.task:hover {
+  box-shadow: 1px 1px 15px rgb(23, 23, 23);
+}
+
+.task_grabbing {
+  box-shadow: 1px 1px 15px rgb(35, 35, 35);
+}
+
+/* Tags */
+.tags {
+  width: 100%;
+}
+
+.tag {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.tag span {
+  padding: 4px 10px;
+  background-color: rgb(49, 49, 49);
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.tag span.high {
+  background-color: rgba(223, 10, 10, 0.275);
+  color: red;
+}
+
+.tag span.low {
+  background-color: rgba(10, 223, 46, 0.275);
+  color: rgb(131, 203, 131);
+}
+
+.tag span.medium {
+  background-color: rgba(223, 198, 10, 0.275);
+  color: yellow;
+}

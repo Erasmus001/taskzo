@@ -1,3 +1,5 @@
+import Localbase from "localbase";
+
 export const User = [
   {
     username: "Eras",
@@ -22,6 +24,18 @@ export const User = [
           },
           {
             taskId: 2,
+            taskTitle: "Introduction to HTML5",
+            taskCategory: "High",
+            taskDesc:
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quidem accusamus, sunt vero, hic dolorum dolorem recusandae obcaecati reiciendis, dolore soluta placeat sequi nam beatae!",
+            taskCreatedAt: new Date(),
+            taskDueDate: "Saturday, 19 November 2022",
+            subTasks: [],
+            tasksNotes: [],
+            taskImgUrl: "",
+          },
+          {
+            taskId: 3,
             taskTitle: "Introduction to HTML5",
             taskCategory: "High",
             taskDesc:
@@ -101,6 +115,42 @@ export const User = [
         ],
       },
     ],
+  },
+];
+
+export const categories = [
+  {
+    id: "001",
+    category: "Todo",
+    tasks: [
+      {
+        taskId: 1,
+        taskTitle: "Introduction to HTML5",
+        taskCategory: "High",
+        taskDesc:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur quidem accusamus, sunt vero, hic dolorum dolorem recusandae obcaecati reiciendis, dolore soluta placeat sequi nam beatae!",
+        taskCreatedAt: new Date(),
+        taskDueDate: "Saturday, 19 November 2022",
+        subTasks: [],
+        tasksNotes: [],
+        taskImgUrl: "",
+      },
+    ],
+  },
+  {
+    id: "002",
+    category: "In Progress",
+    tasks: [],
+  },
+  {
+    id: "003",
+    category: "Stuck",
+    tasks: [],
+  },
+  {
+    id: "004",
+    category: "Completed",
+    tasks: [],
   },
 ];
 
