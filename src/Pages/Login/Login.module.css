@@ -71,7 +71,13 @@
   outline: 0;
 }
 
-.signup_link p{
+.form_group button:disabled {
+  background-color: rgba(5, 89, 174, 0.698);
+  color: rgb(204, 204, 204);
+  cursor: not-allowed;
+}
+
+.signup_link p {
   color: whitesmoke;
   font-size: 16px;
 }

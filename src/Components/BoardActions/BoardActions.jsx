@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './BoardActions.module.css'
 
-const BoardActions = () => {
+const BoardActions = ({}) => {
   const createTask = () => {
     alert('Working...')
   }

@@ -1,31 +1,34 @@
 const path = require("path");
 
 const { app, BrowserWindow } = require("electron");
-// const isDev = require("electron-is-dev");
+const isDev = require("electron-is-dev");
 
 function createWindow() {
-  // Create the browser window.
+  //? Create the browser window.
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1040,
+    height: 700,
     webPreferences: {
       nodeIntegration: true,
     },
   });
 
-  // and load the index.html of the app.
-  // win.loadFile("index.html");
-
-  win.loadURL('http://localhost:3000')
+  if (isDev) {
+    // * Load the dev server...
+    win.loadURL("http://localhost:3000");
+  } else {
+    // * Load the built app file `index.html`
+    win.loadFile(path.join(__dirname), "index.html");
+  }
   // Open the DevTools.
-  // if (isDev) {
-  //   win.webContents.openDevTools({ mode: 'detach' });
-  // }
+  if (isDev) {
+    win.webContents.openDevTools({ mode: "detach" });
+  }
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
+/* This method will be called when Electron has finished. 
+  initialization and is ready to create browser windows. Some APIs can only be used after this event occurs.
+*/
 app.whenReady().then(createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common

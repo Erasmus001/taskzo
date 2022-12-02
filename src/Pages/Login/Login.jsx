@@ -1,44 +1,69 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/AppContext';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
-  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  // ? Referencing the respective inputs...
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
 
   const navigate = useNavigate()
 
-  let { currentUser } = useAppContext()
+  const { login } = useAppContext()
 
   // ? Login Functionality
-  const login = (event) => {
+  const loginHandler = (event) => {
     event.preventDefault();
 
-    currentUser = username
+    // * Checking if inputs are valid...
+    if (!email) {
+      toast.error('Please input your email')
+      emailRef.current.focus()
+      return;
+    } else if (!password) {
+      toast.error('Please input your password')
+      passwordRef.current.focus()
+      return;
+    } else {
+      setIsLoading(!isLoading)
 
-    setTimeout(() => {
-      console.log(currentUser);
+      setTimeout(() => {
+        login(email, password)
 
-      navigate('/dashboard')
-      setUsername('')
-      setPassword('')
-    }, 3000)
+        setTimeout(() => {
+          // * Navigate to the main project dashboard..
+          navigate('/dashboard')
+
+          // * Reset form inputs back to empty boxes...
+          setEmail('')
+          setPassword('')
+        }, 3000)
+      }, 4000)
+      setIsLoading(!isLoading)
+    }
   }
   return (
     <div className={styles.login_page}>
       <div className={styles.login_form_hd}>
         <h3>Login to your account.</h3>
       </div>
-      <form autoCapitalize='on' autoComplete='off' autoCorrect='on' spellCheck onSubmit={login}>
+      <form autoCapitalize='on' autoComplete='off' autoCorrect='on' spellCheck onSubmit={loginHandler}>
         <div className={styles.form_wrapper}>
           <div className={styles.form_group}>
-            <label htmlFor="username">Username</label>
-            <input type="text" value={username}
-              onChange={(event) => setUsername(event.target.value)}
+            <label htmlFor="email">Email</label>
+            <input type="email" value={email}
+              onChange={(event) => setEmail(event.target.value)}
               required
-              placeholder='Username'
+              placeholder='Email'
+              ref={emailRef}
+              disabled={isLoading && true}
             />
           </div>
           <div className={styles.form_group}>
@@ -47,10 +72,12 @@ const Login = () => {
               value={password} onChange={(event) => setPassword(event.target.value)}
               required
               placeholder='Password'
+              ref={passwordRef}
+              disabled={isLoading && true}
             />
           </div>
           <div className={styles.form_group}>
-            <button type='submit'>Login</button>
+            <button type='submit' disabled={isLoading && true}>{isLoading ? "Logging in..." : "Login"}</button>
           </div>
         </div>
       </form>

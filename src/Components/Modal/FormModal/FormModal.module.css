@@ -39,7 +39,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
 .form_group {
@@ -52,16 +52,16 @@
 }
 
 .form_group > label {
-  font-size: 16px;
+  font-size: 15px;
   color: rgb(61, 61, 61);
 }
 
 .form_group > input, 
 .form_selects > select {
   width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 2px solid rgb(180, 180, 180);
+  padding: 12px 10px;
+  font-size: 15px;
+  border: 1px solid rgb(179, 179, 179);
   outline: 0;
   border-radius: 5px;
 }
@@ -81,4 +81,16 @@
   align-items: center;
   justify-content: flex-start;
   gap: 5px;
+}
+
+.submit_task {
+  width: 100%;
+  padding: 17px 25px;
+  font-size: 18px;
+  border: 0;
+  outline: 0;
+  border-radius: 5px;
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
 }

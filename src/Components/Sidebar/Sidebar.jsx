@@ -1,9 +1,17 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useAppContext } from '../../Context/AppContext'
 import Logo from '../Logo/Logo'
 import styles from './Sidebar.module.css'
 
 const Sidebar = () => {
+  const { logout } = useAppContext()
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    logout()
+    navigate('/login')
+  }
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebar_header}>
@@ -21,6 +29,7 @@ const Sidebar = () => {
 
       <div className={styles.settings}>
         <NavLink to='/settings'>Settings</NavLink>
+        <button type='button' onClick={logoutHandler}>Log out</button>
       </div>
     </div>
   )

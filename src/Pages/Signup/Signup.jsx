@@ -1,42 +1,65 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styles from './Signup.module.css';
-import Localbase from 'localbase';
-
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
+import { useAppContext } from '../../Context/AppContext';
 
 const Signup = () => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
-  const db = new Localbase('userCred')
+  // ? Referencing the respective inputs...
+  const usernameRef = useRef(null)
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+
   const navigate = useNavigate()
+  const { register } = useAppContext()
 
   const createAccount = (event) => {
     event.preventDefault();
 
-    setTimeout(() => {
-      db.collection('userCred').add({
-        username,
-        email,
-        password
-      })
+    // * Checking if inputs are valid...
+    if (!username) {
+      toast.error('Please input your username')
+      usernameRef.current.focus()
+      return;
+    } else if (!email) {
+      toast.error('Please input your email')
+      emailRef.current.focus()
+      return;
+    } else if (!password) {
+      toast.error('Please input your password')
+      passwordRef.current.focus()
+      return;
+    } else {
+      setIsLoading(!isLoading)
 
-      alert('Account created...');
-      navigate('/dashboard')
-    }, 3000)
+      setTimeout(() => {
+        register(username, email, password)
+        toast.success('Registration Successful');
 
+        setTimeout(() => {
+          // * Navigate to the main project dashboard..
+          navigate('/onboard')
 
-    setUsername('')
-    setEmail('')
-    setPassword('')
+          // * Reset form inputs back to empty boxes...
+          setUsername('')
+          setEmail('')
+          setPassword('')
+        }, 3000)
+      }, 4000)
+      setIsLoading(!isLoading)
+    }
   }
 
   return (
     <div className={styles.signup_page}>
       <div className={styles.signup_form_hd}>
-        <h3>Create an account.</h3>
+        <h3>Get Started For Free.</h3>
       </div>
       <form autoCapitalize='on' autoComplete='off' autoCorrect='on' spellCheck onSubmit={createAccount}>
         <div className={styles.form_wrapper}>
@@ -44,28 +67,28 @@ const Signup = () => {
             <label htmlFor="username">Username</label>
             <input type="text" value={username}
               onChange={(event) => setUsername(event.target.value)}
-              required
               placeholder='Username'
+              ref={usernameRef}
             />
           </div>
           <div className={styles.form_group}>
             <label htmlFor="email">Email</label>
             <input type="email"
               value={email} onChange={(event) => setEmail(event.target.value)}
-              required
               placeholder='Email'
+              ref={emailRef}
             />
           </div>
           <div className={styles.form_group}>
             <label htmlFor="password">Password</label>
             <input type="password"
               value={password} onChange={(event) => setPassword(event.target.value)}
-              required
               placeholder='Password'
+              ref={passwordRef}
             />
           </div>
           <div className={styles.form_group}>
-            <button>Create account</button>
+            <button disabled={isLoading ? true : false}>{isLoading ? 'Creating account...' : 'Create account'}</button>
           </div>
         </div>
       </form>

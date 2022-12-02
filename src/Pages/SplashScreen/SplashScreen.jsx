@@ -8,6 +8,8 @@ const SplashScreen = () => {
 
   const navigate = useNavigate()
 
+  const isLoggedIn = JSON.parse(localStorage.getItem("isAuthenticated"));
+
   useEffect(() => {
     // * Check localstorage if there is an initial launch present..
     const isFirstLaunch = JSON.parse(localStorage.getItem('initialLaunch'))
@@ -16,14 +18,17 @@ const SplashScreen = () => {
     if (!isFirstLaunch) {
       localStorage.setItem('initialLaunch', JSON.stringify(!initialLaunch))
       setInitialLaunch(!initialLaunch)
-      console.log(initialLaunch);
     } else {
       // * Mimic the async functionality
       setTimeout(() => {
-        navigate('/signup')
+        if (isLoggedIn) {
+          navigate('/dashboard')
+        } else {
+          navigate('/signup')
+        }
       }, 3000)
     }
-  }, [initialLaunch, navigate])
+  }, [initialLaunch, navigate, isLoggedIn])
 
   return (
     <div className={styles.splashscreen}>

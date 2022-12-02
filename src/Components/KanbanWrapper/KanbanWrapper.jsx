@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import KanbanColumn from '../KanbanColumn/KanbanColumn'
 import styles from './KanbanWrapper.module.css'
-import Categories from '../../Localbase/DB'
 
 const KanbanWrapper = () => {
+  const [kanbanColumns, setKanbanColumns] = useState([])
   return (
     <div className={styles.kanban_wrapper}>
-      {/* {
-        Categories?.map((userTask) => (
-          <KanbanColumn data={userTask} key={userTask.id} />
+      {
+        kanbanColumns?.tasks?.map((kanbanColumn) => (
+          <KanbanColumn data={kanbanColumn} key={kanbanColumn} />
         ))
-      } */}
+      }
     </div>
   )
 }

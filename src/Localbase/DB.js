@@ -1,5 +1,3 @@
-import Localbase from "localbase";
-
 export const User = [
   {
     username: "Eras",
