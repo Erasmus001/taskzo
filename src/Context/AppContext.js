@@ -1,12 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, createContext, useContext } from "react";
 import { toast } from "react-hot-toast";
+import Localbase from "localbase";
 
 const AppContext = createContext({
   currentUser: null,
 });
 
 export const useAppContext = () => useContext(AppContext);
+
+export const db = new Localbase("db");
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -19,6 +22,42 @@ const AuthContextProvider = ({ children }) => {
   // * Handle Inputs...
   const handleProjectName = (event) => setProjectName(event.target.value);
   const handleProjectDesc = (event) => setProjectDesc(event.target.value);
+
+  const projectList = [
+    {
+      id: 1,
+      name: projectName,
+      columns: [
+        {
+          id: 1,
+          title: "Todo",
+          tasks: [
+            {
+              taskId: 1,
+              taskTitle: "New Company Website Design",
+              taskCategory: "High",
+              taskDesc: "A new UI design for our existing website.",
+            },
+          ],
+        },
+        {
+          id: 2,
+          title: "In Progress",
+          tasks: [],
+        },
+        {
+          id: 3,
+          title: "Stuck",
+          tasks: [],
+        },
+        {
+          id: 4,
+          title: "Completed",
+          tasks: [],
+        },
+      ],
+    },
+  ];
 
   // * Register User
   const register = (username, email, password) => {
@@ -34,8 +73,10 @@ const AuthContextProvider = ({ children }) => {
     saveUser();
     // * Getting the auth state from localstorage
     const getAuth = JSON.parse(localStorage.getItem("isAuthenticated"));
-
     if (getAuth) setIsAuthenticated(true);
+
+    // Create a db for the user..
+    db.collection("projects").add({ projectList }, "projects");
   };
 
   // * Login user...
@@ -61,6 +102,22 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("isAuthenticated");
   };
 
+  // * Create project...
+  const createNewProject = () => {
+    const projectsRef = db
+      .collection("projects")
+      .doc("projects")
+      .get()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // console.log(projectsRef);
+  };
+
   const value = {
     currentUser,
     isAuthenticated,
@@ -74,6 +131,7 @@ const AuthContextProvider = ({ children }) => {
     login,
     setIsAuthenticated,
     logout,
+    createNewProject,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

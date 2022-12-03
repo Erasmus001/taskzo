@@ -4,7 +4,7 @@ import styles from './KanbanColumn.module.css'
 import Task from '../Task/Task'
 
 const KanbanColumn = ({ data }) => {
-  const { id, name, tasks } = data
+  const { title, tasks } = data
 
   // const dragOver = (event) => {
   //   event.preventDefault();
@@ -25,13 +25,13 @@ const KanbanColumn = ({ data }) => {
 
   return (
     <div className={styles.kanban_col}
-      // onDragOver={dragOver}
-      // onDragEnter={dragEnter}
-      // onDragLeave={dragLeave}
-      // onDrop={drop}
+    // onDragOver={dragOver}
+    // onDragEnter={dragEnter}
+    // onDragLeave={dragLeave}
+    // onDrop={drop}
     >
       <div className={styles.kanban_col_hd}>
-        <h3>{name}</h3>
+        <h3>{title}</h3>
         <p>{tasks.length}</p>
       </div>
       <div className={styles.task_lists}>

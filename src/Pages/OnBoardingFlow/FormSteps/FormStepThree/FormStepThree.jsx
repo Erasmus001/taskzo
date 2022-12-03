@@ -1,9 +1,18 @@
 import React from 'react'
 import { toast } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
+import { useAppContext } from '../../../../Context/AppContext'
 import styles from '../FormSteps.module.css'
 
 const FormStepThree = ({ step, back }) => {
-  const finishForm = () => toast.success('Form completed...')
+  const { createNewProject } = useAppContext()
+  const navigate = useNavigate()
+
+  const finishForm = () => {
+    createNewProject()
+    toast.success('Project created...')
+    navigate('/dashboard')
+  }
   return (
     <div className={styles.form_step}>
       <form autoCapitalize='on' autoComplete='on' autoSave='on' className={styles.form}>

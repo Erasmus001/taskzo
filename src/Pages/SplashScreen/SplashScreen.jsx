@@ -22,7 +22,7 @@ const SplashScreen = () => {
       setTimeout(() => {
         if (isLoggedIn) {
           navigate('/dashboard')
-        } else if (user) {
+        } else if (user || !isLoggedIn) {
           navigate('/login')
         }
         else {

@@ -5,8 +5,9 @@ import styles from './Task.module.css'
 const Task = ({ task }) => {
   const { taskId, taskCategory, taskTitle, taskDesc } = task
   return (
-    <div className={`${styles.task} ${styles.task_grabbing}}`} 
+    <div className={`${styles.task} ${styles.task_grabbing}}`}
       draggable
+      id={taskId}
     >
       {/* Task Tags */}
       <div className={styles.tags}>
