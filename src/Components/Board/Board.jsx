@@ -4,11 +4,11 @@ import KanbanWrapper from '../KanbanWrapper/KanbanWrapper'
 import ProjectTitle from '../ProjectTitle/ProjectTitle'
 import styles from './Board.module.css'
 
-const Board = ({modal}) => {
+const Board = ({ modal }) => {
   return (
     <div className={styles.board}>
-      <ProjectTitle title='Project One'/>
-      <BoardActions />
+      <ProjectTitle title='Project One' />
+      <BoardActions openModal={modal} />
       <KanbanWrapper />
     </div>
   )

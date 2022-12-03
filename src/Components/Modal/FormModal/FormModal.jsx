@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { categories } from '../../../Localbase/DB'
 import styles from './FormModal.module.css'
 
-const FormModal = ({showModal}) => {
+const FormModal = ({ showModal, closeModal }) => {
   const [taskTitle, setTaskTitle] = useState('')
   const [taskCategory, setTaskCategory] = useState('')
   const [taskPriority, setTaskPriority] = useState('')
   const [taskDueDate, setTaskDueDate] = useState('')
   const [taskDesc, setTaskDesc] = useState('')
   const [taskCategories, setTaskCategories] = useState([])
+
+  const formRef = useRef(null)
 
   useEffect(() => {
     setTaskCategories(categories)
@@ -20,6 +23,14 @@ const FormModal = ({showModal}) => {
   const handleTaskDesc = (event) => setTaskDesc(event.target.value)
   const handleTaskDueDate = (event) => setTaskDueDate(event.target.value)
   const handleTaskPriority = (event) => setTaskPriority(event.target.value)
+
+  const openModal = () => {
+    if (showModal) {
+      closeModal()
+    } else {
+
+    }
+  }
 
   // * Create Task...
   const createTaskHandler = (event) => {
@@ -36,11 +47,11 @@ const FormModal = ({showModal}) => {
   }
 
   return (
-    <div className={styles.form_modal} onClick={showModal}>
-      <form autoCapitalize='on' 
-        autoComplete='on' 
-        autoCorrect='on' 
-        className={styles.form} 
+    <div className={styles.form_modal} onClick={openModal} ref={formRef}>
+      <form autoCapitalize='on'
+        autoComplete='on'
+        autoCorrect='on'
+        className={styles.form}
         onSubmit={createTaskHandler}
       >
 

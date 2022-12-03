@@ -16,7 +16,7 @@ const Login = () => {
 
   const navigate = useNavigate()
 
-  const { login } = useAppContext()
+  const { login, setIsAuthenticated } = useAppContext()
 
   // ? Login Functionality
   const loginHandler = (event) => {
@@ -39,8 +39,14 @@ const Login = () => {
 
         setTimeout(() => {
           // * Navigate to the main project dashboard..
-          navigate('/dashboard')
+          const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'))
 
+          if (isAuthenticated) {
+            navigate('/dashboard')
+          } else {
+            setIsAuthenticated(false)
+            setIsLoading(false)
+          }
           // * Reset form inputs back to empty boxes...
           setEmail('')
           setPassword('')
@@ -52,7 +58,7 @@ const Login = () => {
   return (
     <div className={styles.login_page}>
       <div className={styles.login_form_hd}>
-        <h3>Login to your account.</h3>
+        <h3>Log In</h3>
       </div>
       <form autoCapitalize='on' autoComplete='off' autoCorrect='on' spellCheck onSubmit={loginHandler}>
         <div className={styles.form_wrapper}>
@@ -60,7 +66,6 @@ const Login = () => {
             <label htmlFor="email">Email</label>
             <input type="email" value={email}
               onChange={(event) => setEmail(event.target.value)}
-              required
               placeholder='Email'
               ref={emailRef}
               disabled={isLoading && true}
@@ -70,7 +75,6 @@ const Login = () => {
             <label htmlFor="password">Password</label>
             <input type="password"
               value={password} onChange={(event) => setPassword(event.target.value)}
-              required
               placeholder='Password'
               ref={passwordRef}
               disabled={isLoading && true}

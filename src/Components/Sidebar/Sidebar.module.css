@@ -46,12 +46,28 @@
   width: 100%;
   padding: 20px 10px;
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 9px;
 }
 
 .settings a {
   padding: 12px 15px;
   color: whitesmoke;
   background-color: rgba(29, 29, 29, 0.952);
+  text-align: center;
+}
+
+.settings button {
+  width: 100%;
+  padding: 14px 10px;
+  background-color: rgba(29, 29, 29, 0.952);
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  border-radius: 7px;
 }

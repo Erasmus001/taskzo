@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './BoardActions.module.css'
 
-const BoardActions = ({}) => {
+const BoardActions = ({ openModal }) => {
   const createTask = () => {
-    alert('Working...')
+    openModal()
   }
   return (
     <div className={styles.board_actions}>

@@ -54,6 +54,10 @@
   color: rgb(216, 216, 216);
 }
 
+.form_group input:disabled {
+  cursor: not-allowed;
+}
+
 .form_group input:focus {
   outline: 2px solid rgba(9, 90, 171, 0.72);
 }

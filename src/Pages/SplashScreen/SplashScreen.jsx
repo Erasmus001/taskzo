@@ -5,12 +5,11 @@ import styles from './Splashscreen.module.css'
 
 const SplashScreen = () => {
   const [initialLaunch, setInitialLaunch] = useState(false)
-
   const navigate = useNavigate()
-
   const isLoggedIn = JSON.parse(localStorage.getItem("isAuthenticated"));
+  const user = JSON.parse(localStorage.getItem('user'))
 
-  useEffect(() => {
+  const checkState = () => {
     // * Check localstorage if there is an initial launch present..
     const isFirstLaunch = JSON.parse(localStorage.getItem('initialLaunch'))
 
@@ -23,12 +22,19 @@ const SplashScreen = () => {
       setTimeout(() => {
         if (isLoggedIn) {
           navigate('/dashboard')
-        } else {
+        } else if (user) {
+          navigate('/login')
+        }
+        else {
           navigate('/signup')
         }
       }, 3000)
     }
-  }, [initialLaunch, navigate, isLoggedIn])
+  }
+
+  useEffect(() => {
+    checkState()
+  })
 
   return (
     <div className={styles.splashscreen}>

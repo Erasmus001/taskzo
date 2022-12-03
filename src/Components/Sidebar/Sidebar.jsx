@@ -29,7 +29,7 @@ const Sidebar = () => {
 
       <div className={styles.settings}>
         <NavLink to='/settings'>Settings</NavLink>
-        <button type='button' onClick={logoutHandler}>Log out</button>
+        <button type='button' onClick={logoutHandler} className={styles.logout}>Log out</button>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import styles from './Signup.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
@@ -43,7 +43,7 @@ const Signup = () => {
         toast.success('Registration Successful');
 
         setTimeout(() => {
-          // * Navigate to the main project dashboard..
+          // * Navigate to the main project dashboard...
           navigate('/onboard')
 
           // * Reset form inputs back to empty boxes...
@@ -69,6 +69,7 @@ const Signup = () => {
               onChange={(event) => setUsername(event.target.value)}
               placeholder='Username'
               ref={usernameRef}
+              disabled={isLoading && true}
             />
           </div>
           <div className={styles.form_group}>
@@ -77,6 +78,7 @@ const Signup = () => {
               value={email} onChange={(event) => setEmail(event.target.value)}
               placeholder='Email'
               ref={emailRef}
+              disabled={isLoading && true}
             />
           </div>
           <div className={styles.form_group}>
@@ -85,6 +87,7 @@ const Signup = () => {
               value={password} onChange={(event) => setPassword(event.target.value)}
               placeholder='Password'
               ref={passwordRef}
+              disabled={isLoading && true}
             />
           </div>
           <div className={styles.form_group}>

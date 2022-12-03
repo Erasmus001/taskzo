@@ -1,12 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, {
-  useState,
-  createContext,
-  useContext,
-  useLayoutEffect,
-} from "react";
+import React, { useState, createContext, useContext } from "react";
 import { toast } from "react-hot-toast";
-// import { db } from "../hooks/useDB";
 
 const AppContext = createContext({
   currentUser: null,
@@ -38,6 +32,7 @@ const AuthContextProvider = ({ children }) => {
     };
 
     saveUser();
+    // * Getting the auth state from localstorage
     const getAuth = JSON.parse(localStorage.getItem("isAuthenticated"));
 
     if (getAuth) setIsAuthenticated(true);
@@ -47,17 +42,24 @@ const AuthContextProvider = ({ children }) => {
   const login = (email, password) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (email === user?.email || password === user?.password) {
-      toast.success("Login successful");
-      setCurrentUser(user);
-    } else {
-      toast.error("Sorry, user does not exist! Please try again.");
+    // * Validating user inputs (User Credentials)...
+    if (email !== user?.email || password !== user?.password) {
+      toast.error("Sorry, user does not exist!");
+      setCurrentUser(null);
+      localStorage.setItem("isAuthenticated", isAuthenticated);
       return;
+    } else {
+      toast.success("Login successful");
+      localStorage.setItem("isAuthenticated", !isAuthenticated);
+      setCurrentUser(user);
     }
   };
 
   // * log out user...
-  const logout = () => setCurrentUser(null);
+  const logout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("isAuthenticated");
+  };
 
   const value = {
     currentUser,
