@@ -54,12 +54,12 @@ const Modal = ({ showModal, setShowModal }) => {
         const tasks = db.projects[0].colums[0].tasks;
         if (tasks < 1) {
           db.projects[0].colums[0].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         } else {
           db.projects[0].colums[0].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         }
@@ -67,12 +67,12 @@ const Modal = ({ showModal, setShowModal }) => {
         const tasks = db.projects[0].colums[1].tasks;
         if (tasks < 1) {
           db.projects[0].colums[1].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         } else {
           db.projects[0].colums[1].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         }
@@ -80,12 +80,12 @@ const Modal = ({ showModal, setShowModal }) => {
         const tasks = db.projects[0].colums[2].tasks;
         if (tasks < 1) {
           db.projects[0].colums[2].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         } else {
           db.projects[0].colums[2].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         }
@@ -93,12 +93,12 @@ const Modal = ({ showModal, setShowModal }) => {
         const tasks = db.projects[0].colums[3].tasks;
         if (tasks < 1) {
           db.projects[0].colums[3].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         } else {
           db.projects[0].colums[3].tasks.push({
-            id: Math.floor(Math.random() * 1000),
+            id: Math.floor(Math.random() * 1000).toString(),
             taskTitle, taskDesc, taskCategory, taskDueDate, taskTag
           })
         }

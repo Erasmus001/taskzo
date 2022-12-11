@@ -46,22 +46,22 @@ const NewProject = () => {
           projectDesc: projectDesc,
           colums: [
             {
-              id: 1,
+              id: Math.floor(Math.random() * 100).toLocaleString(),
               columnName: "Todo",
               tasks: [],
             },
             {
-              id: 2,
+              id: Math.floor(Math.random() * 100).toLocaleString(),
               columnName: "In Progress",
               tasks: [],
             },
             {
-              id: 3,
+              id: Math.floor(Math.random() * 100).toLocaleString(),
               columnName: "Stuck",
               tasks: [],
             },
             {
-              id: 4,
+              id: Math.floor(Math.random() * 100).toLocaleString(),
               columnName: "Completed",
               tasks: [],
             }

@@ -15,7 +15,9 @@ const Sidebar = () => {
   }
 
   useEffect(() => {
+    const db = JSON.parse(localStorage.getItem('db'))
 
+    setProjectLists(db.projects)
   }, [])
 
   const handleNewProject = () => navigate('/new-project')
@@ -41,11 +43,6 @@ const Sidebar = () => {
               <NavLink to='' key={index}>{projectName}</NavLink>
             ))
           }
-          {/* <NavLink to=''>Project 1</NavLink>
-          <NavLink to=''>Project 3</NavLink>
-          <NavLink to=''>Project 4</NavLink>
-          <NavLink to=''>Project 4</NavLink>
-          <NavLink to=''>Project 4</NavLink> */}
         </div>
       </div>
 

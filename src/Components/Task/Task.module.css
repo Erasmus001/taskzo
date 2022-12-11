@@ -57,3 +57,26 @@
   font-size: 13px;
   color: gray;
 }
+
+.moreBtn {
+  width: 10px;
+  height: 12px;
+  /* border: 1px solid gray; */
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 2px;
+  cursor: auto;
+}
+
+.moreBtn div {
+  height: 2px;
+  width: 2px;
+  background-color: rgb(169, 169, 169);
+  border-radius: 50%;
+}
+
+.moreBtn:focus {
+  cursor: grab;
+}
