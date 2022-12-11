@@ -1,0 +1,97 @@
+.create_new_project {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(---main-dark);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 40px;
+  padding: 150px 0;
+}
+
+.new_project_hd {
+  width: 350px;
+  text-align: center;
+  /* border: 1px solid gray; */
+}
+
+.new_project_hd h3 {
+  font-size: 25px;
+  color: whitesmoke;
+  font-weight: 500;
+}
+
+.new_project_form {
+  width: 430px;
+  border: 1px solid rgba(55, 55, 55, 0.275);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 25px;
+  border-radius: 10px;
+  /* box-shadow: 1px 2px 15px rgba(15, 15, 15, 0.264); */
+}
+
+.form_group {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form_group label {
+  font-size: 16px;
+  color: rgb(213, 213, 213);
+}
+
+:is(.form_group input, .form_group textarea) {
+  width: 100%;
+  padding: 13px 13px;
+  font-size: 15px;
+  background-color: rgb(35, 35, 35);
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  color: rgb(209, 209, 209);
+  line-height: 1.3;
+}
+
+:is(.form_group input, .form_group textarea):focus {
+  outline: 2px solid rgba(9, 90, 171, 0.72);
+}
+
+:is(.form_group input, .form_group textarea):disabled {
+  cursor: not-allowed;
+  background-color: rgb(18, 18, 18);
+}
+
+.form_group textarea {
+  resize: none;
+}
+
+.form_group button {
+  width: 100%;
+  padding: 17px 25px;
+  font-size: 17px;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  background: dodgerblue;
+  color: white;
+}
+
+.form_group button:hover {
+  background: rgb(5, 97, 189);
+}
+
+.form_group button:disabled {
+  background: rgb(0, 35, 70);
+  cursor: not-allowed;
+}

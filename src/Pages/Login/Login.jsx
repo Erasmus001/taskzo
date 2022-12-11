@@ -38,9 +38,9 @@ const Login = () => {
         login(email, password)
 
         setTimeout(() => {
-          // * Navigate to the main project dashboard..
           const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'))
 
+          // * Navigate to the main project dashboard..
           if (isAuthenticated) {
             navigate('/dashboard')
           } else {

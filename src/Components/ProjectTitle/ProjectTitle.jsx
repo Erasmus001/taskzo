@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './ProjectTitle.module.css'
 
-const ProjectTitle = ({ title }) => {
+const ProjectTitle = ({ projectTitle }) => {
   return (
-    <div className={styles.projectTitle}>
-      <h3>{title}</h3>
+    <div className={styles.project_title}>
+      <h3>{projectTitle}</h3>
     </div>
   )
 }

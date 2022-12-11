@@ -1,54 +1,58 @@
-import React from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
-import { db, useAppContext } from '../../Context/AppContext'
-import Logo from '../Logo/Logo'
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useAppContext } from '../../Context/AppContext'
 import styles from './Sidebar.module.css'
 
 const Sidebar = () => {
   const [projectLists, setProjectLists] = useState([])
-
+  const navigate = useNavigate()
   const { logout } = useAppContext()
-  const navigate = useNavigate();
 
-  const logoutHandler = () => {
+  const handleLogout = () => { 
     logout()
     navigate('/login')
   }
 
   useEffect(() => {
-    db.collection('projects').doc("projects").get().then((res) => {
-      console.log(res.projectList);
-      setProjectLists(res.projectList)
-    }).catch((err) => console.log(err))
+
   }, [])
+
+  const handleNewProject = () => navigate('/new-project')
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.sidebar_header}>
-        <Link to='/'>
-          <Logo />
-        </Link>
+      <div className={styles.logo}>
+        <h3>Taskzo</h3>
+      </div>
+      <div className={styles.add_new_project}>
+        <button type='button' onClick={handleNewProject}>+ Add New Project</button>
       </div>
 
-      <nav className={styles.nav}>
-        <NavLink to='/home'>Home</NavLink>
-        <NavLink to='/dashboard'>Dashboard</NavLink>
-        <NavLink to='projects'>Projects</NavLink>
-        <NavLink to='/calender'>Calender</NavLink>
-        <hr />
-        {/* Project lists */}
-        {
-          projectLists.map((project) => (
-            <NavLink to={project.id} key={project.id}>{project.name}</NavLink>
-          ))
-        }
-      </nav>
+      <div className={styles.sidebar_nav}>
+        <div className={styles.sidebar_nav_hd}>
+          <h3>Projects</h3>
+          <p>{projectLists.length}</p>
+        </div>
+        {/* <hr className={styles.hr} /> */}
+        <div className={styles.project_lists}>
+          {
+            projectLists.map(({ projectName }, index) => (
+              <NavLink to='' key={index}>{projectName}</NavLink>
+            ))
+          }
+          {/* <NavLink to=''>Project 1</NavLink>
+          <NavLink to=''>Project 3</NavLink>
+          <NavLink to=''>Project 4</NavLink>
+          <NavLink to=''>Project 4</NavLink>
+          <NavLink to=''>Project 4</NavLink> */}
+        </div>
+      </div>
 
       <div className={styles.settings}>
-        <NavLink to='/settings'>Settings</NavLink>
-        <button type='button' onClick={logoutHandler} className={styles.logout}>Log out</button>
+        {/* <NavLink to=''>Settings</NavLink> */}
+        <button type='button'>Darkmode</button>
+        <button type='button' onClick={handleLogout}>Log out</button>
       </div>
     </div>
   )

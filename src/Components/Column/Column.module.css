@@ -1,0 +1,55 @@
+.column {
+  /* height: 100%; */
+  border: 1px solid rgba(40, 40, 40, 0.529);
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.column::-webkit-scrollbar {
+  display: none;
+}
+
+.column_hd {
+  width: 100%;
+  height: 50px;
+  padding: 13px 10px;
+  border-bottom: 1px solid rgba(38, 38, 38, 0.423);
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.column_hd h3 {
+  font-size: 18px;
+  color: rgb(203, 203, 203);
+}
+
+.column_hd p {
+  padding: 4px 8px;
+  background-color: gray;
+  color: black;
+  font-size: 14px;
+  font-weight: 550;
+  border-radius: 5px;
+}
+
+.droppable_column {
+  height: 100%;
+}
+
+.add_task {
+  width: 100%;
+}
+
+.add_task button {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  background-color: #242424;
+  color: rgb(194, 194, 194);
+}

@@ -1,63 +1,66 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, createContext, useContext } from "react";
 import { toast } from "react-hot-toast";
-import Localbase from "localbase";
+// import Localbase from "localbase";
 
 const AppContext = createContext({
-  currentUser: null,
+  currentUser: null
+
 });
 
 export const useAppContext = () => useContext(AppContext);
 
-export const db = new Localbase("db");
+// export const db = new Localbase("db");
 
 const AuthContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   // * Form states...
-  const [projectName, setProjectName] = useState("");
-  const [projectDesc, setProjectDesc] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  // * Handle Inputs...
-  const handleProjectName = (event) => setProjectName(event.target.value);
-  const handleProjectDesc = (event) => setProjectDesc(event.target.value);
-
-  const projectList = [
-    {
-      id: 1,
-      name: projectName,
-      columns: [
-        {
-          id: 1,
-          title: "Todo",
-          tasks: [
-            {
-              taskId: 1,
-              taskTitle: "New Company Website Design",
-              taskCategory: "High",
-              taskDesc: "A new UI design for our existing website.",
-            },
-          ],
-        },
-        {
-          id: 2,
-          title: "In Progress",
-          tasks: [],
-        },
-        {
-          id: 3,
-          title: "Stuck",
-          tasks: [],
-        },
-        {
-          id: 4,
-          title: "Completed",
-          tasks: [],
-        },
-      ],
-    },
-  ];
+  // const Colums = [
+  //   {
+  //     id: 1,
+  //     title: "Todo",
+  //     tasks: [
+  //       {
+  //         taskId: "1",
+  //         taskTitle: "New Company Website Design",
+  //         taskCategory: "High",
+  //         taskDesc: "A new UI design for our existing website.",
+  //       },
+  //       {
+  //         taskId: "2",
+  //         taskTitle: "Implement Payment Gateway",
+  //         taskCategory: "Low",
+  //         taskDesc: "Payment gateway implementation with Paystack.",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "In Progress",
+  //     tasks: [
+  //       {
+  //         taskId: "1",
+  //         taskTitle: "New Company Website Design",
+  //         taskCategory: "Medium",
+  //         taskDesc: "A new UI design for our existing website.",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Stuck",
+  //     tasks: [],
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Completed",
+  //     tasks: [],
+  //   },
+  // ];
 
   // * Register User
   const register = (username, email, password) => {
@@ -76,7 +79,7 @@ const AuthContextProvider = ({ children }) => {
     if (getAuth) setIsAuthenticated(true);
 
     // Create a db for the user..
-    db.collection("projects").add({ projectList }, "projects");
+    // db.collection("projects").add({ columns }, "projects");
   };
 
   // * Login user...
@@ -102,39 +105,55 @@ const AuthContextProvider = ({ children }) => {
     localStorage.removeItem("isAuthenticated");
   };
 
-  // * Create project...
-  const createNewProject = () => {
-    const projectsRef = db
-      .collection("projects")
-      .doc("projects")
-      .get()
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    // console.log(projectsRef);
-  };
-
   const value = {
     currentUser,
     isAuthenticated,
-    projectName,
-    projectDesc,
     register,
-    setProjectDesc,
-    setProjectName,
-    handleProjectDesc,
-    handleProjectName,
     login,
     setIsAuthenticated,
-    logout,
-    createNewProject,
+    logout
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export default AuthContextProvider;
+
+/**
+ * 
+
+
+db.collection("projects").add({
+        projects: [
+          {
+            id: Math.floor(Math.random() * 100),
+            projectName: projectName,
+            projectDesc: projectDesc,
+            colums: [
+              {
+                id: 1,
+                columnName: "Todo",
+                tasks: [],
+              },
+              {
+                id: 2,
+                columnName: "In Progress",
+                tasks: [],
+              },
+              {
+                id: 3,
+                columnName: "Stuck",
+                tasks: [],
+              },
+              {
+                id: 4,
+                columnName: "Completed",
+                tasks: [],
+              },
+            ],
+          },
+        ],
+      });
+
+
+ */

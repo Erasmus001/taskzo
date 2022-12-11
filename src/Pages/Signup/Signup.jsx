@@ -44,7 +44,7 @@ const Signup = () => {
 
         setTimeout(() => {
           // * Navigate to the main project dashboard...
-          navigate('/onboard')
+          navigate('/new-project')
 
           // * Reset form inputs back to empty boxes...
           setUsername('')
