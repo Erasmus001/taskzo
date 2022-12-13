@@ -18,7 +18,7 @@ function createWindow() {
     win.loadURL("http://localhost:3000");
   } else {
     // * Load the built app file `index.html`
-    win.loadFile(path.join(__dirname), "index.html");
+    win.loadFile(`file://${path.join(__dirname, "../build/index.html")}`);
   }
   // Open the DevTools.
   // if (isDev) {
